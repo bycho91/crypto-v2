@@ -1,1 +1,43 @@
 @import "../../common/common.scss";
+
+
+.coin-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border: 1px solid whitesmoke;
+    padding: 1em;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+    &:hover {
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        cursor: pointer;
+    }
+
+
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &-info {
+            display: flex;
+            align-items: center;
+            gap: .5em;
+
+            img {
+                width: 24px;
+                height: auto;
+            }
+    
+            p {
+                color: gray;
+                font-size: .8rem;
+            }
+        }
+    }
+
+    &-price {
+
+    }
+}

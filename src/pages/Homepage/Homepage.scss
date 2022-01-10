@@ -42,6 +42,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
   }
 
   .latest-news-articles {
@@ -54,7 +55,7 @@
 .crypto-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gri-gap: 2em;
+  grid-gap: 2em;
 }
 
 @media screen and (max-width: 800) {
