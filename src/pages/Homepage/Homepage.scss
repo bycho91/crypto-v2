@@ -1,0 +1,45 @@
+@import "../../common/common.scss";
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 1em 0;
+
+  .total-crypto-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    border-bottom: 1px solid $bg-white;
+    border-top: 1px solid $bg-white;
+    padding: 0.5em 0;
+    font-size: 1.5rem;
+  }
+
+  .section {
+    margin-top: 2em;
+  }
+}
+
+.total-crypto-stats-stat {
+  p {
+    font-weight: bold;
+
+    span {
+      font-weight: normal;
+    }
+  }
+}
+
+.latest-news {
+  h1 {
+    margin-bottom: 0.5em;
+  }
+  .latest-news-articles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2em;
+  }
+}

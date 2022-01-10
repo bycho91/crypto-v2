@@ -1,0 +1,37 @@
+@import "./common/common.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section-padding {
+  padding: 1em;
+}
+
+// APP SECTION
+.app {
+  display: flex;
+
+  .navbar-section {
+    flex: 0.15;
+    height: 100vh;
+    background: whitesmoke;
+    padding: 1em;
+  }
+
+  .main-section {
+    display: flex;
+    flex: 0.85;
+    flex-direction: column;
+  }
+}
