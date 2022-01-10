@@ -18,7 +18,7 @@ const NewsCard = ({ article }) => {
     <div className="news-card">
       <Card style={{ height: "100%" }}>
         <CardMedia
-          height="140"
+          height="200"
           image={article?.image?.thumbnail?.contentUrl || demoImage}
           component="img"
         />

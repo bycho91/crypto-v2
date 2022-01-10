@@ -20,10 +20,10 @@
     font-size: 1.3rem;
     padding: 1em;
     cursor: pointer;
-    border-radius: 1em;
 
     &:hover {
-      background-color: white;
+      background-color: gray;
+      color: $bg-white;
     }
   }
 }

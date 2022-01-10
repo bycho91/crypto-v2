@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="logo">
+      <div className="logo section-padding">
         <SiWebmoney size="3rem" />
         <Link to="/">
           <h1>Crypto.xyz</h1>

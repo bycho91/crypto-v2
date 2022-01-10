@@ -37,6 +37,13 @@
   h1 {
     margin-bottom: 0.5em;
   }
+
+  .latest-news-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .latest-news-articles {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
