@@ -50,3 +50,15 @@
     grid-gap: 2em;
   }
 }
+
+.crypto-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gri-gap: 2em;
+}
+
+@media screen and (max-width: 800) {
+  .latest-news-articles, .crypto-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

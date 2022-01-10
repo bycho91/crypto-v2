@@ -1,11 +1,11 @@
 import React from "react";
 import "./CoinCard.scss";
-const CoinCard = () => {
+
+const CoinCard = ({ coin }) => {
   return (
     <div>
-      <h1>Coincard</h1>
+      <h1>{coin.name}</h1>
     </div>
   );
 };
-import "./CoinCard.scss";
 export default CoinCard;
