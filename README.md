@@ -14,3 +14,4 @@
 - react-icons
 - axios
 - react-countup
+- moment
