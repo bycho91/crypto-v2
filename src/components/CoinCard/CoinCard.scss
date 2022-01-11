@@ -1,43 +1,49 @@
 @import "../../common/common.scss";
 
-
 .coin-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  border-radius: 20px;
+  min-width: 350px;
+
+  &:hover {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+
+      img {
+        width: 24px;
+        height: auto;
+      }
+
+      p {
+        color: gray;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  &-details {
     display: flex;
     flex-direction: column;
-    gap: 1em;
-    border: 1px solid whitesmoke;
-    padding: 1em;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    gap: 0.5em;
+  }
+}
 
-    &:hover {
-        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-        cursor: pointer;
-    }
-
-
-    &-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        &-info {
-            display: flex;
-            align-items: center;
-            gap: .5em;
-
-            img {
-                width: 24px;
-                height: auto;
-            }
-    
-            p {
-                color: gray;
-                font-size: .8rem;
-            }
-        }
-    }
-
-    &-price {
-
-    }
+.news-card-info-source {
+  font-weight: 700;
 }

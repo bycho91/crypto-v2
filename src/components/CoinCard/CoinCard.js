@@ -15,10 +15,9 @@ const CoinCard = ({ coin }) => {
         <p>Rank: {coin.rank}</p>
       </div>
 
-      <div className="coin-card-price">
+      <div className="coin-card-details">
         <h1>${parseFloat(coin.price).toFixed(2)}</h1>
         <div className="market-cap">Market Cap: ${millify(coin.marketCap)}</div>
-        <div className="rank">Rank: </div>
       </div>
     </div>
   );

@@ -13,37 +13,31 @@ import moment from "moment";
 const demoImage =
   "https://blog.coindcx.com/wp-content/uploads/2021/11/Crypto-news.png";
 
-const NewsCard = ({ article }) => {
+const NewsCard = ({
+  article: { name, description, datePublished, image, provider },
+}) => {
   return (
-    <div className="news-card">
-      <Card style={{ height: "100%" }}>
-        <CardMedia
-          height="200"
-          image={article?.image?.thumbnail?.contentUrl || demoImage}
-          component="img"
-        />
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            style={{ fontWeight: "700" }}
-            component="div"
-          >
-            {article.name.length > 80
-              ? `${article.name.substring(0, 80)}...`
-              : article.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary" gutterBottom>
-            {article.description.length > 100
-              ? `${article.description.substring(0, 100)}`
-              : article.description}
-          </Typography>
-          <Typography variant="body3" style={{ fontWeight: "700" }}>
-            {moment(article.datePublished).startOf("ss").fromNow()}
-          </Typography>
-        </CardContent>
-      </Card>
-    </div>
+    <a href={provider.url} target="_blank" rel="noreferrer">
+      <div className="news-card">
+        <div className="news-card-header">
+          <h3>{name.length > 80 ? name.substring(0, 80) : name}</h3>
+          <img src={image?.thumbnail.contentUrl} alt={name} height="100px" />
+        </div>
+
+        <div className="news-card-description">
+          {description.length > 150
+            ? description.substring(0, 150)
+            : description}
+        </div>
+
+        <div className="news-card-info">
+          <div className="news-card-info-source">{provider[0].name}</div>
+          <div className="time">
+            {moment(datePublished).startOf("ss").fromNow()}
+          </div>
+        </div>
+      </div>
+    </a>
   );
 };
 

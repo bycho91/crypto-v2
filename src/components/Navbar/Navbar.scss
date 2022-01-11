@@ -1,9 +1,17 @@
 @import "../../common/common.scss";
 
+.navbar {
+  color: white;
+}
+
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5em;
+
+  h1 {
+    color: white;
+  }
 }
 
 .navbar-menu {
@@ -22,8 +30,21 @@
     cursor: pointer;
 
     &:hover {
-      background-color: gray;
+      background-color: white;
       color: $bg-white;
+    }
+  }
+}
+
+@media screen and (max-width: 1010px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .navbar-menu {
+      margin: unset;
+      width: unset;
     }
   }
 }

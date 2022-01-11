@@ -42,24 +42,28 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-  }
-
-  .latest-news-articles {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2em;
   }
 }
 
 .crypto-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
-@media screen and (max-width: 800) {
-  .latest-news-articles, .crypto-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.crypto-list-coins {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1em;
+}
+
+.crypto-list-coins > * {
+  flex-basis: 100%;
+}
+
+.latest-crypto-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
