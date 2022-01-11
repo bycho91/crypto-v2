@@ -32,7 +32,15 @@
     &:hover {
       background-color: white;
       color: $bg-white;
+
+      p {
+        color: black;
+      }
     }
+  }
+
+  div p {
+    color: white;
   }
 }
 

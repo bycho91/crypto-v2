@@ -26,22 +26,28 @@ const Navbar = () => {
         <Avatar alt="user" src={userImg} sx={{ width: 24, height: 24 }} />
       </div> */}
       <div className="navbar-menu">
-        <div className="navbar-menu-option">
-          <RiHome3Line />
-          <p>Home</p>
-        </div>
-        <div className="navbar-menu-option">
-          <RiMoneyDollarCircleLine />
-          <p>Coins</p>
-        </div>
-        <div className="navbar-menu-option">
-          <RiNewspaperLine />
-          <p>Latest News</p>
-        </div>
-        <div className="navbar-menu-option">
+        <Link to="/">
+          <div className="navbar-menu-option">
+            <RiHome3Line color="white" />
+            <p>Home</p>
+          </div>
+        </Link>
+        <Link to="/coins">
+          <div className="navbar-menu-option">
+            <RiMoneyDollarCircleLine color="white" />
+            <p>Coins</p>
+          </div>
+        </Link>
+        <Link to="/news">
+          <div className="navbar-menu-option">
+            <RiNewspaperLine color="white" />
+            <p>Latest News</p>
+          </div>
+        </Link>
+        {/* <div className="navbar-menu-option">
           <RiUserSettingsLine />
           <p>Settings</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

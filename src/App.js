@@ -2,7 +2,7 @@ import React from "react";
 import "./App.scss";
 import { Navbar, Footer } from "./components";
 
-import { Homepage, CoinsPage, NewsPage } from "./pages";
+import { Homepage, CoinsPage, NewsPage, CoinDetailsPage } from "./pages";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -17,6 +17,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/coins" element={<CoinsPage />} />
+            <Route path="/coin/:id" element={<CoinDetailsPage />} />
             <Route path="/news" element={<NewsPage />} />
           </Routes>
         </div>

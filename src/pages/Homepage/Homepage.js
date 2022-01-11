@@ -28,16 +28,12 @@ const Homepage = () => {
     count: 4,
   });
 
-  console.log(news);
-
   const { data: cryptos, isLoading } = useGetCryptosQuery(10);
 
   useEffect(() => {
     setGlobalStats(cryptos?.data?.stats);
     setCryptoList(cryptos?.data?.coins);
   }, [cryptos]);
-
-  console.log(cryptos?.data?.coins);
 
   if (isFetching) return "Loading...";
   if (isLoading) return "Loading...";
@@ -79,7 +75,9 @@ const Homepage = () => {
             <Grid container spacing={2}>
               {cryptoList.map((coin) => (
                 <Grid item xs={12} lg={6}>
-                  <CoinCard coin={coin} className="cc" />
+                  <Link to={`/coin/${coin.uuid}`}>
+                    <CoinCard coin={coin} className="cc" />
+                  </Link>
                 </Grid>
               ))}
             </Grid>

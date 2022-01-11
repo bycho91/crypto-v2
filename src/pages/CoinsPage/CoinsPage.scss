@@ -1,0 +1,23 @@
+.coins-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+}
+
+.search-bar {
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+
+  &-input {
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid whitesmoke;
+    text-align: center;
+    font-size: 2rem;
+  }
+}
