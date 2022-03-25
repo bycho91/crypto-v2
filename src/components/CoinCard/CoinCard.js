@@ -6,7 +6,7 @@ import millify from 'millify';
 
 const CoinCard = ({ coin }) => {
   return (
-    <Link to={`/coins/${coin.uuid}`}>
+    <Link to={`/coins/${coin.uuid}/${coin.name}`}>
       <div className="coin-card">
         <div className="coin-card-header">
           <div className="coin-card-header-info">

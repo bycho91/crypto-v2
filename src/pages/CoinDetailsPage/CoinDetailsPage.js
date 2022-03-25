@@ -9,10 +9,14 @@ import { Grid } from '@material-ui/core';
 import { NewsCard } from '../../components';
 
 const CoinDetailsPage = () => {
-  const { id } = useParams();
+  const { id, name } = useParams();
 
   const retrieveCoinInfo = async () => {
     const data = await fetchCoinById(id).then((res) => res.data.coin);
+    return data;
+  };
+  const retrieveNews = async () => {
+    const data = await fetchAllNews(name, 12);
     return data;
   };
 
@@ -21,12 +25,6 @@ const CoinDetailsPage = () => {
     isLoading,
     isError,
   } = useQuery(['coin'], retrieveCoinInfo);
-
-  const retrieveNews = async () => {
-    const data = await fetchAllNews(coin.name, 12);
-    return data;
-  };
-
   const {
     data: news,
     isLoading: newsLoading,
