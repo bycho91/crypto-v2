@@ -1,70 +1,57 @@
-import React, { useState, useEffect } from "react";
-import "./Homepage.scss";
-import { Link } from "react-router-dom";
-import millify from "millify";
+import React from 'react';
+import './Homepage.scss';
+import { Link } from 'react-router-dom';
+import millify from 'millify';
 
-import { Grid } from "@material-ui/core";
+import { Grid } from '@material-ui/core';
 
-import sourceImg from "../../static/headshot.png";
-
-import { NewsCard, CoinCard } from "../../components";
-
-import { useGetCryptoNewsQuery } from "../../services/getNewsApi";
-import { useGetCryptosQuery } from "../../services/getCryptoApi";
-
-const statsData = {
-  coins: "12311",
-  exchanges: 552,
-  marketCap: "2.1T",
-  volume: "89M",
-};
+import { NewsCard, CoinCard } from '../../components';
+import { fetchAllCoins } from '../../api/CoinMethods';
+import { useQuery } from 'react-query';
 
 const Homepage = () => {
-  const [globalStats, setGlobalStats] = useState(null);
-  const [cryptoList, setCryptoList] = useState(null);
+  const retrieveCoins = async () => {
+    const data = await fetchAllCoins().then((res) => res.data);
+    return data;
+  };
 
-  const { data: news, isFetching } = useGetCryptoNewsQuery({
-    newsCategory: "bitcoin",
-    count: 4,
-  });
+  const {
+    data: { stats, coins },
+    isLoading,
+    isError,
+  } = useQuery('topcoins', retrieveCoins);
 
-  const { data: cryptos, isLoading } = useGetCryptosQuery(10);
+  if (isLoading) return <div>Loading...</div>;
 
-  useEffect(() => {
-    setGlobalStats(cryptos?.data?.stats);
-    setCryptoList(cryptos?.data?.coins);
-  }, [cryptos]);
-
-  if (isFetching) return "Loading...";
-  if (isLoading) return "Loading...";
+  if (isError) return <div>Error...</div>;
   return (
     <div className="homepage">
       <div className="container-fluid">
-        {globalStats && (
+        {stats && (
           <div className="total-crypto-stats">
             <div className="total-crypto-stats-stat">
               <p>
-                Coins: <span>{globalStats.total}</span>
+                Coins: <span>{stats.total}</span>
               </p>
             </div>
             <div className="total-crypto-stats-stat">
               <p>
-                Exchanges: <span>{globalStats.totalExchanges}</span>
+                Exchanges: <span>{stats.totalExchanges}</span>
               </p>
             </div>
             <div className="total-crypto-stats-stat">
               <p>
-                Market Cap: <span>${millify(globalStats.totalMarketCap)}</span>
+                Market Cap: <span>${millify(stats.totalMarketCap)}</span>
               </p>
             </div>
             <div className="total-crypto-stats-stat">
               <p>
-                24h Volume: <span>${millify(globalStats.total24hVolume)}</span>
+                24h Volume: <span>${millify(stats.total24hVolume)}</span>
               </p>
             </div>
           </div>
         )}
-        {cryptoList && (
+        {coins && (
           <div className="crypto-list section-padding section">
             <div className="latest-crypto-heading">
               <h1>Top 10 Crypto</h1>
@@ -73,9 +60,9 @@ const Homepage = () => {
               </Link>
             </div>
             <Grid container spacing={2}>
-              {cryptoList.map((coin) => (
-                <Grid item xs={12} lg={6}>
-                  <Link to={`/coin/${coin.uuid}`}>
+              {coins.map((coin) => (
+                <Grid item xs={12} lg={6} key={coin.uuid}>
+                  <Link to={`/coins/${coin.uuid}`}>
                     <CoinCard coin={coin} className="cc" />
                   </Link>
                 </Grid>
@@ -83,22 +70,6 @@ const Homepage = () => {
             </Grid>
           </div>
         )}
-
-        <div className="latest-news section-padding section">
-          <div className="latest-news-heading">
-            <h1>Latest News</h1>
-            <Link to="/news">
-              <h3 className="see-more-btn">See More</h3>
-            </Link>
-          </div>
-          <Grid container spacing={2}>
-            {news?.value?.map((article) => (
-              <Grid item xs={12} lg={6}>
-                <NewsCard article={article} />
-              </Grid>
-            ))}
-          </Grid>
-        </div>
       </div>
     </div>
   );
