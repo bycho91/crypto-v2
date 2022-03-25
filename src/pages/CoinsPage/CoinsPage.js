@@ -1,43 +1,45 @@
-import React, { useState, useEffect } from "react";
-import "./CoinsPage.scss";
-import { CoinCard, AppPagination } from "../../components";
-import { useGetCryptosQuery } from "../../services/getCryptoApi";
-import { Grid, Button } from "@material-ui/core";
+import React, { useState, useEffect } from 'react';
+import './CoinsPage.scss';
+import { CoinCard, AppPagination } from '../../components';
+import { Grid, Button } from '@material-ui/core';
+import { useQuery } from 'react-query';
+import { fetchAllCoins } from '../../api/CoinMethods';
 
 const CoinsPage = () => {
-  const [coins, setCoins] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [filteredCoins, setFilteredCoins] = useState(null);
-  const { data: coinList, isFetching } = useGetCryptosQuery(100);
+
+  const retrieveCoins = async () => {
+    const data = await fetchAllCoins();
+    return data.data.coins;
+  };
+
+  const { data, isLoading, isError } = useQuery('coins', retrieveCoins);
 
   const changeSearchTerm = (e) => {
     setSearchTerm(e.target.value);
-    console.log(searchTerm);
   };
 
   const getFilteredCoins = () => {
-    const filteredData = coins?.filter((coin) =>
+    const filteredData = data?.filter((coin) =>
       coin.name?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     setFilteredCoins(filteredData);
   };
 
-  useEffect(() => {
-    setCoins(coinList?.data?.coins);
-  }, []);
-
   useEffect(() => {}, [filteredCoins]);
-
   useEffect(() => {}, [searchTerm]);
-  if (isFetching) return "Loading...";
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error...</div>;
   return (
     <div className="coins-page section-padding">
       <div className="search-bar">
         <input
           type="text"
           className="search-bar-input"
-          placeholder="search crypto"
+          placeholder="search for a coin"
           value={searchTerm}
           onChange={(e) => changeSearchTerm(e)}
         />
@@ -48,16 +50,16 @@ const CoinsPage = () => {
       {filteredCoins !== null ? (
         <Grid container spacing={2}>
           {filteredCoins.map((coin) => (
-            <Grid xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={4} key={coin.uuid}>
               <CoinCard coin={coin} />
             </Grid>
           ))}
         </Grid>
       ) : (
-        coins && (
-          <Grid container spacing={2}>
-            {coins.map((coin) => (
-              <Grid xs={12} md={6} lg={4}>
+        data && (
+          <Grid container spacing={3}>
+            {data.map((coin) => (
+              <Grid item xs={12} md={6} lg={4} key={coin.uuid}>
                 <CoinCard coin={coin} />
               </Grid>
             ))}

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import "./NewsPage.scss";
-import { useGetCryptoNewsQuery } from "../../services/getNewsApi";
-import { NewsCard } from "../../components";
-import { Grid } from "@material-ui/core";
+import React, { useEffect, useState } from 'react';
+import './NewsPage.scss';
+import { useGetCryptoNewsQuery } from '../../services/getNewsApi';
+import { NewsCard } from '../../components';
+import { Grid } from '@material-ui/core';
 
 const NewsPage = () => {
-  const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
+  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const [articles, setArticles] = useState(null);
   const { data: news, isFetching } = useGetCryptoNewsQuery({
     newsCategory: newsCategory,
@@ -16,9 +16,7 @@ const NewsPage = () => {
     setArticles(news?.value);
   }, []);
 
-  console.log(news?.value);
-
-  if (isFetching) return "Loading...";
+  if (isFetching) return 'Loading...';
   return (
     <div className="news-page section-padding">
       {articles && (

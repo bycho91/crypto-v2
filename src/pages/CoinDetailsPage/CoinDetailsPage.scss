@@ -1,0 +1,53 @@
+.container {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-container {
+  display: flex;
+  align-items: center;
+
+  .main-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    &--top {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      .icon-img {
+        width: 50px;
+      }
+
+      .name {
+        font-weight: 600;
+        font-size: 2rem;
+      }
+
+      .symbol {
+        background-color: black;
+        color: white;
+        padding: 0.5em;
+        border-radius: 10px;
+        font-weight: 500;
+      }
+    }
+
+    &--mid {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+
+      .badge {
+        background-color: black;
+        color: white;
+        padding: 0.3em;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+.bottom-container {
+}
