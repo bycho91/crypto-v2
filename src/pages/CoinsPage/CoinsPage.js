@@ -20,7 +20,8 @@ const CoinsPage = () => {
     setSearchTerm(e.target.value);
   };
 
-  const getFilteredCoins = () => {
+  const getFilteredCoins = (e) => {
+    e.preventDefault();
     const filteredData = data?.filter((coin) =>
       coin.name?.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -36,16 +37,22 @@ const CoinsPage = () => {
   return (
     <div className="coins-page section-padding">
       <div className="search-bar">
-        <input
-          type="text"
-          className="search-bar-input"
-          placeholder="search for a coin"
-          value={searchTerm}
-          onChange={(e) => changeSearchTerm(e)}
-        />
-        <Button variant="outlined" onClick={getFilteredCoins}>
-          Search
-        </Button>
+        <form>
+          <input
+            type="text"
+            className="search-bar-input"
+            placeholder="search for a coin"
+            value={searchTerm}
+            onChange={(e) => changeSearchTerm(e)}
+          />
+          <Button
+            type="submit"
+            variant="outlined"
+            onClick={(e) => getFilteredCoins(e)}
+          >
+            Search
+          </Button>
+        </form>
       </div>
       {filteredCoins !== null ? (
         <Grid container spacing={2}>

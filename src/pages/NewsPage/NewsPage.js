@@ -1,28 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './NewsPage.scss';
-import { useGetCryptoNewsQuery } from '../../services/getNewsApi';
 import { NewsCard } from '../../components';
 import { Grid } from '@material-ui/core';
+import { useQuery } from 'react-query';
+import { fetchAllNews } from '../../api/NewsMethod';
 
 const NewsPage = () => {
-  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
-  const [articles, setArticles] = useState(null);
-  const { data: news, isFetching } = useGetCryptoNewsQuery({
-    newsCategory: newsCategory,
-    count: 12,
-  });
+  const retrieveNews = async () => {
+    const data = await fetchAllNews('crypto', 12);
+    return data;
+  };
 
-  useEffect(() => {
-    setArticles(news?.value);
-  }, []);
+  const { data, isFetching, isLoading, isError } = useQuery(
+    'articles',
+    retrieveNews
+  );
 
-  if (isFetching) return 'Loading...';
+  if (isFetching) return <div>Fetching...</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error...</div>;
+
   return (
     <div className="news-page section-padding">
-      {articles && (
+      {data && (
         <Grid container spacing={2}>
-          {articles.map((article) => (
-            <Grid item xs={12} md={6} lg={4}>
+          {data.map((article) => (
+            <Grid item xs={12} md={6} lg={4} key={article.title}>
               <NewsCard article={article} />
             </Grid>
           ))}
