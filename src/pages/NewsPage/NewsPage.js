@@ -22,6 +22,7 @@ const NewsPage = () => {
 
   return (
     <div className="news-page section-padding">
+      <h1 style={{ marginBottom: '1em' }}>Latest Crypto News</h1>
       {data && (
         <Grid container spacing={2}>
           {data.map((article) => (

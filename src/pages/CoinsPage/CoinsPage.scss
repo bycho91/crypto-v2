@@ -7,17 +7,25 @@
 
 .search-bar {
   height: 72px;
+  margin: 0 auto;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1em;
 
   &-input {
     background: none;
+    width: 200px;
     border: none;
     outline: none;
     border-bottom: 1px solid whitesmoke;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }

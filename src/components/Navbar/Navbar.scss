@@ -1,7 +1,30 @@
-@import "../../common/common.scss";
+@import '../../common/common.scss';
 
 .navbar {
   color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 1080px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .mobile-view {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: block;
+  }
 }
 
 .logo {
@@ -14,11 +37,21 @@
   }
 }
 
+.sidebar {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  top: 70px;
+  width: 200px;
+  height: 100vh;
+  background-color: black;
+}
+
 .navbar-menu {
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-top: 5em;
+  margin-top: 1em;
 
   &-option {
     width: 100%;
@@ -28,31 +61,15 @@
     font-size: 1.3rem;
     padding: 1em;
     cursor: pointer;
+    transition: 0.2s ease all;
 
     &:hover {
-      background-color: white;
+      transform: scale(1.03);
       color: $bg-white;
-
-      p {
-        color: black;
-      }
     }
   }
 
   div p {
     color: white;
-  }
-}
-
-@media screen and (max-width: 1010px) {
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-
-    .navbar-menu {
-      margin: unset;
-      width: unset;
-    }
   }
 }

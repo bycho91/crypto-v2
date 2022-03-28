@@ -24,7 +24,7 @@ const Homepage = () => {
     <div className="homepage">
       <div className="container-fluid">
         {data.stats && (
-          <div className="total-crypto-stats">
+          <div className="total-crypto-stats-container">
             <div className="total-crypto-stats-stat">
               <p>
                 Coins: <span>{data.stats.total}</span>
@@ -48,11 +48,11 @@ const Homepage = () => {
           </div>
         )}
         {data.coins && (
-          <div className="crypto-list section-padding section">
+          <div className="crypto-list">
             <div className="latest-crypto-heading">
               <h1>Top 10 Crypto</h1>
               <Link to="/coins">
-                <h3 className="see-more-btn">See More</h3>
+                <h5 className="see-more-btn">See More</h5>
               </Link>
             </div>
             <Grid container spacing={2}>

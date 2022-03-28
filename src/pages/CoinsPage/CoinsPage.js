@@ -37,11 +37,11 @@ const CoinsPage = () => {
   return (
     <div className="coins-page section-padding">
       <div className="search-bar">
-        <form>
+        <form className="search-form">
           <input
             type="text"
             className="search-bar-input"
-            placeholder="search for a coin"
+            placeholder="search"
             value={searchTerm}
             onChange={(e) => changeSearchTerm(e)}
           />

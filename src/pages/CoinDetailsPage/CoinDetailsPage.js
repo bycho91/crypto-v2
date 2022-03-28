@@ -63,7 +63,7 @@ const CoinDetailsPage = () => {
       <div className="news-container">
         {news && (
           <>
-            <h1>Latest {coin.name} News</h1>
+            <h1 style={{ marginBottom: '1em' }}>Latest {coin.name} News</h1>
             <Grid container spacing={2}>
               {news.map((article) => (
                 <Grid item xs={12} md={6} lg={4} key={article.title}>

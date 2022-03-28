@@ -1,4 +1,8 @@
-@import "../../common/common.scss";
+@import '../../common/common.scss';
+
+.container-fluid {
+  padding: unset;
+}
 
 .homepage {
   display: flex;
@@ -7,7 +11,7 @@
   width: 100%;
   margin: 1em 0;
 
-  .total-crypto-stats {
+  .total-crypto-stats-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +20,10 @@
     border-top: 1px solid $bg-white;
     padding: 0.5em 0;
     font-size: 1.5rem;
+
+    @media (max-width: 1080px) {
+      display: none;
+    }
   }
 
   .section {
@@ -66,4 +74,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.see-more-btn {
+  cursor: pointer;
+  color: blue;
 }
