@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CoinsPage.scss';
 import { CoinCard, AppPagination } from '../../components';
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, TextField } from '@material-ui/core';
 import { useQuery } from 'react-query';
 import { fetchAllCoins } from '../../api/CoinMethods';
 
@@ -38,10 +38,9 @@ const CoinsPage = () => {
     <div className="coins-page section-padding">
       <div className="search-bar">
         <form className="search-form">
-          <input
-            type="text"
-            className="search-bar-input"
-            placeholder="search"
+          <TextField
+            variant="outlined"
+            label="search coin"
             value={searchTerm}
             onChange={(e) => changeSearchTerm(e)}
           />
